@@ -18,6 +18,7 @@ namespace cinatra {
         none
 	};
 
+	// constexpr 说明符声明可以在编译时求得函数或变量的值
 	constexpr inline auto HTML = res_content_type::html;
 	constexpr inline auto JSON = res_content_type::json;
 	constexpr inline auto TEXT = res_content_type::string;

@@ -7,6 +7,7 @@
 #include <vector>
 #include "use_asio.hpp"
 namespace cinatra {
+	// size_t 与操作系统的位数有关，64位或者32位
 	constexpr const size_t MAX_CACHE_SIZE = 100000;
 
 	class http_cache {

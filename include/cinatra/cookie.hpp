@@ -3,8 +3,13 @@
 #include "utils.hpp"
 
 namespace cinatra {
+	// 根据版本号提供Netscape格式和RFC 2109格式的Cookie的字符串格式
+	// 主要函数为to_string()
+	// 主要参数为name 和 value
+	// 其他参数可以添加或者不添加
 	class cookie {
 	public:
+		// C++ 11 使用“=default”可以在有其他自定义的构造函数的前提下告诉编译器生成一个默认构造函数
 		cookie() = default;
 		cookie(const std::string& name, const std::string& value) : name_(name), value_(value) {
 
@@ -58,9 +63,10 @@ namespace cinatra {
 			http_only_ = http_only;
 		}
 
+		// 根据版本号提供Netscape格式和RFC 2109格式的Cookie的字符串转换函数
 		std::string to_string() const {
 			std::string result;
-			result.reserve(256);
+			result.reserve(256); //确定新分配的最小长度为256
 			result.append(name_);
 			result.append("=");
 			if (version_ == 0)
@@ -144,6 +150,19 @@ namespace cinatra {
 		std::string  path_ = "";
 		std::string  priority_ = "";
 		bool         secure_ = false;
+		/*
+
+		typedef long                          __time32_t;
+		typedef __int64                       __time64_t;
+
+		#ifndef _CRT_NO_TIME_T
+			#ifdef _USE_32BIT_TIME_T
+				typedef __time32_t time_t;
+			#else
+				typedef __time64_t time_t;
+			#endif
+		#endif
+		*/
 		std::time_t  max_age_ = -1;
 		bool         http_only_ = false;
 	};
